@@ -9,14 +9,33 @@ void goHome(int *day, int *gold, int *energy, int *hunger, int *gameLoop){
         *hunger-=1;
     }
 
-    if (*hunger == 0){
-        *gameLoop = 1;
-    }
     printf("You went Home!");
 }
 
- void goFarm(){
-    printf("You went to the Farm!");
+ void goFarm(int *day, int *gold, int *energy, int *hunger){
+    int farmLoop = 0;
+    
+    while (farmLoop == 0 || energy <= 0){
+        printf("You went to the Farm!\n\n"
+                "You went to the Farm!:\n"
+                " Available Plots: %d\n"
+                " Tilled Plots: %d\n"
+                " Water: %s\n"
+                " Harvest: %s\n\n"
+                "Choose action: ",
+           *n, *age, *role, *status);
+
+            
+        printf("[1] Till plots\n[2] Sow Seeds\n[3] Water Crops\n[4] Harvest Crops\n[5]Buy Seeds\n[6] Sell Crops\n[7] Leave Farm");
+
+        switch(farmLoop){
+            case 1:
+                
+            case 2:
+        }
+        
+    }
+    
 }
 
  void goShop(){
@@ -70,12 +89,31 @@ int main() {
 	//Game stats
 	int gameLoop = 1;
 
+    //Farm stats
+    int plots = 30;
+    int tilledPlots = 0;
+    int tomatoes;
+    int corn;
+    int strawberries;
+    
+    
+
 	gameStart(&day, &gold, &energy, &hunger, &gameLoop);
 	
 	while (gameLoop == 1){
+
+        if (hunger == 0){
+        gameLoop = 0;
+    }
+        
         printf(" \n\n This is in main \n\nDay: %d | Gold: %d | Energy: %d | Hunger: %d/3\n", day, gold, energy, hunger);
         options(&day, &gold, &energy, &hunger, &gameLoop);
 	}
-	
+
+    if(hunger <= 0){
+	printf("Game over! You fainted from hunger!");
+    }
+
+    
     return 0;
 }
